@@ -1,0 +1,37 @@
+# Filler-token answer-predictive information: base vs outcome-only RL (steganographic-channel test)
+
+Model: Qwen2.5-1.5B-Instruct, base (checkpoint-0) vs outcome-only GRPO (checkpoint-final), MMLU.
+Filler tokens = stopwords + punctuation in the model's own CoT; content = the rest.
+Token-identity probe: bag-of-tokens logistic regression -> answer letter (the observable-text channel).
+Activation probe: logistic regression on mean-pooled hidden state over those positions.
+Paired on the item intersection both models retain. Chance = 0.25. Bootstrap 2000, seed 42.
+
+## Base: answer-decodability from FILLER token identities (5-fold OOF)
+  accuracy = 0.2286  (95% CI 0.1657-0.2914, n=175)
+
+## RL: answer-decodability from FILLER token identities (5-fold OOF)
+  accuracy = 0.3371  (95% CI 0.2686-0.4000, n=175)
+
+## Base: answer-decodability from CONTENT token identities (control)
+  accuracy = 0.2686  (95% CI 0.2057-0.3371, n=175)
+
+## RL: answer-decodability from CONTENT token identities (control)
+  accuracy = 0.2857  (95% CI 0.2229-0.3543, n=175)
+
+## Base: answer-decodability from FILLER-position activations (5-fold OOF)
+  accuracy = 0.3029  (95% CI 0.2343-0.3771, n=175)
+
+## RL: answer-decodability from FILLER-position activations (5-fold OOF)
+  accuracy = 0.2857  (95% CI 0.2229-0.3543, n=175)
+
+## Base: answer-decodability from CONTENT-position activations (control)
+  accuracy = 0.2286  (95% CI 0.1657-0.2914, n=175)
+
+## RL: answer-decodability from CONTENT-position activations (control)
+  accuracy = 0.2971  (95% CI 0.2286-0.3657, n=175)
+
+## Token-identity steganography index (filler minus content, RL minus base)
+  index = 0.0914  (95% CI -0.0229-0.2000, n=175)
+
+## Activation steganography index (filler minus content, RL minus base)
+  index = -0.0857  (95% CI -0.1829-0.0229, n=175)

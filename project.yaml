@@ -1,0 +1,37 @@
+name: rl-stego-filler
+title: "No Reliable Filler-Token Steganographic Channel After Small-Scale Outcome-Only RL: A Suggestive but Underpowered Token-Identity Result"
+question: >
+  Outcome-only RL rewards the final answer and not the reasoning, which raises
+  the worry that a model could learn to smuggle answer-relevant information
+  through tokens that look like non-load-bearing filler, a steganographic
+  channel hidden in the chain of thought. We test whether, after outcome-only
+  GRPO, the filler tokens (stopwords and punctuation) of Qwen2.5-1.5B-Instruct
+  carry more answer-predictive information than at base, both in the observable
+  token identities (the real channel) and in the filler-position activations,
+  with content tokens as a control and the two models paired on the items both
+  retain.
+stage: write
+status: >
+  Real run complete (RTX 5090, reusing the base and outcome-only-RL checkpoints
+  from rl-selfcot-causal). Token-identity answer-decodability from filler tokens
+  rises from 0.2286 (base, at chance) to 0.3371 (RL, 95% CI 0.2686-0.4000, above
+  chance), and the filler-specific increase exceeds the content-token increase
+  (steganography index +0.0914). But the base-versus-RL filler difference is not
+  significant (overlapping CIs, n=175), the activation probe shows the opposite
+  (index -0.0857), and the RL treatment was weak. We report a suggestive,
+  underpowered hint of a token-identity filler channel, not evidence of one.
+tags:
+  - steganography
+  - cot-faithfulness
+  - reinforcement-learning
+  - outcome-reward
+  - probing
+  - ai-safety
+  - null-result
+collaborators:
+  - "Ephraiem Sarabamoun"
+links:
+  code_local: "~/projects/rl-stego-filler"
+  sibling_study: "~/projects/rl-selfcot-causal"
+  compute: "RTX 5090, torch 2.12 cu130, trl 1.5.1; Qwen2.5-1.5B-Instruct base + outcome-only GRPO"
+references_bib: references.bib

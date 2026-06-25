@@ -1,0 +1,202 @@
+{
+ "plain": "The worry: training an AI only on whether its final answer is correct could teach it to secretly stash answer hints in throwaway words (filler) of its written reasoning, a hidden channel that would fool anyone reading the reasoning. We checked whether a small models filler words predict its answer more after this kind of training, looking both at the actual words and at the models internal activity. The filler words did predict the answer somewhat more after training, but when we tested that gap properly with resampling it was statistically indistinguishable from zero, and the internal-activity measure pointed the other way. So we found no reliable hidden channel, though the training we applied was weak, so this does not settle the broader worry. Approve publishes it as an honest negative result; Reject shelves it.",
+ "cost": {
+  "api_equivalent_usd": 62.9019,
+  "sessions": [
+   {
+    "label": "research-prime-driver",
+    "host": "local",
+    "transcript": "/tmp/stego-driver.jsonl",
+    "messages": 290,
+    "usd": 62.9019
+   }
+  ]
+ },
+ "paper_title": "No Reliable Filler-Token Steganographic Channel After Small-Scale Outcome-Only RL: A Bootstrapped Null",
+ "headline_claim": "On Qwen2.5-1.5B-Instruct before vs after 120 steps of outcome-only GRPO, we find no reliable filler-token steganographic channel: filler-token-identity answer-decodability rises 0.229 to 0.337, but the paired-bootstrap steganography index is +0.0914 with 95% CI -0.0229 to 0.2000 (spans zero), and the activation index is -0.0857 (also spans zero, opposite sign). With a weak RL treatment and n=175 this is a bounded null, not a refutation; the contribution is a token-identity-channel screen plus a specification of the causal-intervention test a credible study needs.",
+ "weakest_part": "The result is a null and stays one under the most charitable reading. The token-identity filler probe rises after RL (0.229 to 0.337) with a positive point-estimate steganography index (+0.0914), and the reviewer panel correctly flagged that I had originally judged significance by an invalid CI-overlap proxy without bootstrapping the index; bootstrapping it paired gives 95% CI -0.0229 to 0.2000, spanning zero, so the channel is not detected. Remaining attackable points: (1) the RL treatment was weak (the sibling run left accuracy nearly flat), so the test has little power for a channel that may only form under strong outcome pressure - bounded null, not refutation; (2) gold-answer decodability is a proxy - a steganographic channel can hide arbitrary information, not just the answer letter, so a null here does not rule out other hidden content; (3) the filler/content split is a heuristic stopword/punctuation rule, not a validated load-bearing-ness measure; (4) a probe finds information, not USE - the decisive test is a causal token-resampling intervention, which I did not run. The panel lean-rejected the original suggestive framing on exactly the missing-index-CI point; I bootstrapped the index and reframed to a clean null in response.",
+ "gate_report": {
+  "project_dir": "/home/ephra/projects/rl-stego-filler",
+  "generated_at": "2026-06-24T17:54:32+00:00",
+  "checks": [
+   {
+    "name": "artifacts",
+    "status": "warn",
+    "detail": "required present; recommended absent: analysis_points.csv, analysis_tests.csv"
+   },
+   {
+    "name": "metric_consistency",
+    "status": "warn",
+    "detail": "[generic parser] all primary values traced; p/CI values not all found (papers round or omit them): ci_bound[4].ci=0.2057 not in paper.md; ci_bound[6].ci=0.2229 not in paper.md; ci_bound[9].ci=0.3771 not in paper.md; ci_bound[10].ci=0.2229 not in paper.md; ci_bound[15].ci=0.3657 not in paper.md"
+   },
+   {
+    "name": "recompute",
+    "status": "pass",
+    "detail": "recompute.py output is identical to analysis_summary.txt (whitespace-normalized) \u2014 every number independently reproduced"
+   },
+   {
+    "name": "csv_traceability",
+    "status": "pass",
+    "detail": "11 metric(s) trace to 2 documented data file(s) with complete sidecars"
+   },
+   {
+    "name": "eval_order",
+    "status": "pass",
+    "detail": "eval_order present and filled in: eval_points.jsonl"
+   },
+   {
+    "name": "citations",
+    "status": "pass",
+    "detail": "17/17 eprints resolve, titles match"
+   },
+   {
+    "name": "reference_count",
+    "status": "pass",
+    "detail": "17 references (distinct keys cited in the draft and present in the bib)"
+   },
+   {
+    "name": "device_scrub",
+    "status": "pass",
+    "detail": "no fleet device names in paper.md/paper.tex"
+   },
+   {
+    "name": "figures",
+    "status": "pass",
+    "detail": "4 figures referenced in paper.md, all on disk with CSV + description sidecars"
+   },
+   {
+    "name": "tex_compiles",
+    "status": "skipped",
+    "detail": "no drafts/paper.tex"
+   },
+   {
+    "name": "style",
+    "status": "pass",
+    "detail": "no em dashes, double hyphens, or bullets"
+   }
+  ],
+  "overall": "pass",
+  "not_checked": [
+   "statistical methodology (test choice, assumptions, multiple comparisons)",
+   "claim/evidence fit \u2014 whether the prose claims more than the numbers support",
+   "novelty against the literature",
+   "code correctness beyond the recompute hook"
+  ]
+ },
+ "reviewer_panel": {
+  "project_dir": "/home/ephra/projects/rl-stego-filler",
+  "draft": "drafts/paper.md",
+  "generated_at": "2026-06-24T17:51:46+00:00",
+  "cli": "claudius",
+  "model": "cli-default",
+  "prompt_version": "b8ba148a6536",
+  "advisory": true,
+  "passes": [
+   {
+    "lens": "design_validity",
+    "ok": true,
+    "overall_verdict": "Lean reject in current form, though the honesty is commendable: the one positive signal and the 'contribution we stand behind' both rest on a content-token control that cannot remove the very confound the paper concedes, and on a dependent variable (gold answer) that does not match the steganographic mechanism. Fix the control's validity argument before any version of this claim is publishable.",
+    "n_findings": 4
+   },
+   {
+    "lens": "measurement",
+    "ok": true,
+    "overall_verdict": "I would not fight for acceptance as is. The single thing that most needs fixing: the headline steganography index (0.0914) is never given a confidence interval and its significance is judged by an invalid CI-overlap proxy on a paired design, so the paper's central quantity is literally untested.",
+    "n_findings": 3
+   },
+   {
+    "lens": "claims",
+    "ok": true,
+    "overall_verdict": "I would not fight for acceptance: the single positive number the paper is built around (steganography index +0.0914) is never given a confidence interval even though the machinery to compute one exists, and the non-significance hedge is applied to a different, narrower quantity; the must-fix is to bootstrap the index itself, which I expect spans zero and collapses even the hedged 'hint.'",
+    "n_findings": 4
+   }
+  ],
+  "findings": [
+   {
+    "lens": "design_validity",
+    "severity": "high",
+    "claim_attacked": "the filler-specific increase exceeds the content-token increase, giving a positive steganography index of 0.0914 ... The contribution we stand behind is the token-identity channel probe with a content control as a cheap first screen",
+    "why": "The two conditions do not differ only in 'whether a channel formed' \u2014 base and RL probe entirely different generated text, because each model writes its own CoT. The content-token arm is offered as the control that nets out RL's surface-phrasing shift. But a difference-in-differences only removes that confound if the phrasing->topic->answer leakage is equal in magnitude for the filler class (stopwords/punctuation) and the content class. There is no reason it is: stopwords and punctuation relate to topic in a completely different way than content words do. So a positive index (0.0914) is fully consistent with 'RL changed filler-token phrasing in topic-correlated ways more than it changed content-token phrasing,' with no hidden channel at all. The paper concedes the phrasing confound in prose but then keeps the index as the standing contribution; the hedge does not cover the fact that the control itself is class-dependent and cannot subtract a class-dependent confound. The conceded flaw therefore contaminates the only positive result, not just its significance.",
+    "suggested_fix": "Either (a) demonstrate empirically that filler and content channels have matched topic-leakage power under a no-channel null \u2014 e.g. a topic-permutation control where filler tokens are reassigned across items of the same MMLU subject, and show the index collapses to zero; or (b) hold the generated text fixed (probe base-model filler tokens, then feed those same token spans through a channel-detection that does not depend on RL re-generating different text), so the comparison isolates carried information rather than changed vocabulary."
+   },
+   {
+    "lens": "measurement",
+    "severity": "high",
+    "claim_attacked": "the filler-specific increase exceeds the content-token increase, giving a positive steganography index of 0.0914 ... The base and RL filler intervals overlap (0.1657 to 0.2914 against 0.2686 to 0.4000), so the base-versus-RL difference that the hypothesis is actually about is not statistically significant at n=175.",
+    "why": "The steganography index is the actual hypothesis quantity (a difference-in-differences: (RL_filler - base_filler) - (RL_content - base_content) = (0.3371-0.2286) - (0.2857-0.2686) = 0.0914), yet it carries no confidence interval anywhere in the draft, gate report, or curve.csv \u2014 the index rows in figure_steg_index.csv have no CI columns. Significance is instead inferred from overlap of the two MARGINAL per-arm filler CIs. That is wrong twice over. (a) It tests the wrong quantity: the marginal base-vs-RL filler comparison is not the index, which also subtracts the content arms. (b) CI-overlap is an invalid (anti-conservative-direction-confusing, generally conservative) test even for the marginal comparison, and the design is explicitly paired ('paired on the item intersection', same 175 items), so the correct procedure is a paired bootstrap of the per-item difference, which the authors had the data to run (eval_points.jsonl has per-example pred/gold) but did not. Propagating the four marginal SEs (each ~0.032-0.036) gives a DiD standard error on the order of 0.05-0.07, so a CI on 0.0914 would comfortably span both 0 and the activation index of -0.0857 \u2014 meaning the two modalities are not actually distinguishable, collapsing the 'a split that a real channel would not produce' contrast in Figure 3.",
+    "suggested_fix": "Compute a paired item-level bootstrap CI directly on the token steganography index (resample the 175 paired items, recompute the full DiD each draw, report 2.5/97.5 percentiles), and a paired bootstrap CI on the base-vs-RL filler difference itself. Report these intervals in the abstract and Figure 3. If, as is likely, the index CI includes 0 and overlaps -0.0857, state that the token and activation modalities are statistically indistinguishable rather than describing them as a 'split.'"
+   },
+   {
+    "lens": "measurement",
+    "severity": "high",
+    "claim_attacked": "Decodability of the answer from filler token identities is 0.2286 at base, which is at the 0.25 chance level ... and 0.3371 after RL (0.2686 to 0.4000), which sits above chance.",
+    "why": "The 'chance' baseline of 0.25 assumes a perfectly balanced four-way answer distribution over the 175 retained items, but accuracy of a logistic-regression probe is compared against the MAJORITY-class rate, not the uniform rate. For 175 items drawn over 4 labels, the expected largest class is ~0.29 (uniform expectation 43.75, SD ~5.7, max of four cells ~50-51/175), so a probe that learns nothing but the marginal label frequency scores ~0.29, not 0.25. The internal evidence confirms the 0.25 line is wrong: base_token_filler = 0.2286 (40/175) is BELOW 0.25, i.e. the probe is performing worse than even uniform guessing \u2014 a signature of an uninformative probe overfitting noise, not a clean chance floor. Against a true ~0.29 majority baseline, RL_filler = 0.3371 (59/175) clears it by only ~0.05, and the lone CI that excludes 0.25 (lower bound 0.2686) does NOT exclude a ~0.29 majority rate. So the qualitative claim 'rises from at chance to above chance,' which is the whole positive signal, may be an artifact of an incorrectly low baseline.",
+    "suggested_fix": "Report the per-fold majority-class (and stratified-dummy) accuracy as the real baseline for every arm, computed on the same 175-item gold distribution, and re-state 'above chance' relative to it. Also report the label distribution of the 175 paired items. If the majority rate is ~0.29-0.30, redraw the chance line in Figures 1-4 and re-evaluate which arms, if any, actually exceed it."
+   },
+   {
+    "lens": "claims",
+    "severity": "high",
+    "claim_attacked": "the filler-specific increase exceeds the content-token increase, giving a positive steganography index of 0.0914 ... a hint of a token-identity filler channel worth a higher-powered look",
+    "why": "The index is a difference-in-differences of four OOF accuracies, each of which the paper reports with a ~\u00b10.065-wide bootstrap CI, yet the index carries no uncertainty at all. The curve.csv.md sidecar states plainly that 'the two steg_index rows are arithmetic on them' -- i.e., the headline statistic in the subtitle, abstract, and conclusion was never bootstrapped, while all eight of its components were. Propagating four independent component variances gives an index SE wide enough that a +0.0914 point estimate is almost certainly not separable from 0. Crucially, the paper's hedge ('the base-versus-RL filler difference is not significant, its confidence intervals overlap') concedes only the single-arm rise 0.2286->0.3371; it never concedes that the index -- the actual named result -- is indistinguishable from zero. The non-significance admission is attached to the wrong number, leaving the titled quantity uncontested.",
+    "suggested_fix": "Reuse the existing 2000-resample, seed-42 bootstrap and per-example predictions in eval_points.jsonl: resample paired items, recompute all four arms and the index per resample, and report the index's 95% CI. If it spans 0 (expected), rewrite the abstract/subtitle/conclusion from 'a positive steganography index of 0.0914' to 'a steganography index not distinguishable from zero,' which would downgrade the paper from 'suggestive hint' to a clean null."
+   },
+   {
+    "lens": "design_validity",
+    "severity": "medium",
+    "claim_attacked": "we ... train two kinds of probe to predict the four-way answer letter ... whether the filler tokens ... carry more answer-predictive information",
+    "why": "The eval_points.jsonl target is `gold` (the correct answer index), not the model's own emitted answer. The named mechanism is steganographic: the model 'smuggles answer-relevant information' it intends to act on, then a downstream decoder recovers it. Decoding gold instead measures correlation with ground truth, which conflates two different things: (i) a hidden channel carrying the model's intended answer, and (ii) RL simply making the CoT (including incidental filler) more topic-aligned and thus more correlated with the truth. At ~0.35 task accuracy the model's answer and gold diverge on ~65% of items, so the two interpretations are sharply separable here, yet the design cannot tell them apart. An RL run that merely improves reasoning competence would raise gold-decodability everywhere \u2014 exactly the observed pattern \u2014 with zero steganography.",
+    "suggested_fix": "Re-run the probes predicting the model's own emitted answer letter, and additionally restrict to items the model answered incorrectly (where gold and model-answer diverge). A genuine channel should decode the model's emitted answer; topic-competence leakage should track gold. Report both."
+   },
+   {
+    "lens": "design_validity",
+    "severity": "medium",
+    "claim_attacked": "Decodability of the answer from filler token identities is 0.2286 at base ... and 0.3371 after RL",
+    "why": "A bag-of-tokens logistic regression's recoverable information scales with the number of tokens it sees per item. Nothing in the materials holds CoT length or filler-token count fixed between base and RL. If outcome-only GRPO changed CoT length or the stopword/punctuation rate (plausible \u2014 RL commonly lengthens or restructures CoTs), the RL filler arm gets a larger or differently-distributed feature set, which raises decodability as a capacity artifact rather than a channel. The content control does not absorb this either, since filler and content counts can move independently. This is an untested alternative explanation for the headline 0.2286->0.3371 rise.",
+    "suggested_fix": "Report per-item filler-token counts and total CoT length for base vs RL (mean and distribution). If they differ, re-run the filler probe under a matched token budget (subsample filler tokens to equal counts per item across conditions) and show the rise survives."
+   },
+   {
+    "lens": "design_validity",
+    "severity": "medium",
+    "claim_attacked": "0.2286 at base, which is at the 0.25 chance level ... to 0.3371 after RL ... the predicted effect",
+    "why": "base_token_filler (0.2286) is the single lowest of the four token-identity values and sits below the 0.25 chance line; rl_token_filler (0.3371) is the single highest. The difference-in-differences that produces the +0.0914 index is therefore driven substantially by the base filler arm being an anomalously low draw, leaving maximal room for an apparent 'rise' that is partly regression to the mean. The content arm started near chance (0.2686) with less room to move, which mechanically inflates the index independent of any channel. With n=175 and four-way labels the per-arm sampling noise (CIs ~\u00b10.065) is comparable to the entire +0.0914 index, so a low base outlier alone can manufacture the result.",
+    "suggested_fix": "Establish the filler-arm noise band with a base-only procedure: split-half or repeated base-vs-base CV resampling to show how large a spurious filler 'rise' arises from noise plus regression to the mean, and report the RL index against that null band rather than against the chance line."
+   },
+   {
+    "lens": "measurement",
+    "severity": "medium",
+    "claim_attacked": "filler-position activation decodability is 0.3029 at base ... 0.3371 after RL (0.2686 to 0.4000), which sits above chance.",
+    "why": "Eight probe accuracies were computed and the narrative selects one (RL filler token-identity, 0.3371) as 'the one positive signal,' but the second-highest value in the entire table is base_act_filler = 0.3029 \u2014 a value above 0.25 occurring at BASE, where by the paper's own logic no channel can exist. This is a direct internal demonstration that ~0.30 accuracy is within this estimator's noise band, which undercuts treating 0.3371 as evidence of anything. Compounding this, of the eight 95% CIs only RL_token_filler excludes 0.25, and it does so by 0.0186 (lower bound 0.2686 = 47/175, one resample-grid step from the chance line). With 8 probe arms tested, the family-wise expectation of at least one CI excluding chance on the high side under the null is non-trivial, and a Bonferroni-style ~99.4% per-arm interval (needed to control the family at 0.05) would widen 0.3371's lower bound well below 0.25. No multiple-comparison correction is mentioned, and the gate report explicitly lists 'multiple comparisons' as not checked.",
+    "suggested_fix": "State the number of comparisons (8 probe arms + 2 indices) and apply a correction (Bonferroni or, better, a max-statistic permutation null across the eight arms). Report the corrected interval for RL_token_filler and note that base_act_filler=0.3029 sits in the same range at base, so absolute values near 0.30 should not be read as signal."
+   },
+   {
+    "lens": "claims",
+    "severity": "medium",
+    "claim_attacked": "0.3371 after RL (0.2686 to 0.4000), which sits above chance",
+    "why": "This 'above chance' call is the entire empirical basis for 'a hint worth a higher-powered look,' and it rests on the one arm out of eight (Figure 4 / analysis_summary lists all eight) whose CI happens to clear 0.25. There is no multiple-comparison correction, and the gate report explicitly lists 'multiple comparisons' as not checked. Across eight near-chance arms, the probability that at least one 95% CI excludes chance by noise alone is high, so 'above chance' for the cherry-relevant arm is exactly the false positive multiplicity predicts. The wording asserts a directional result the uncorrected evidence does not license.",
+    "suggested_fix": "Apply a family-wise correction over the eight arms (e.g., report ~99.4% CIs under Bonferroni, or a permutation null on the maximum arm) and state whether rl_token_filler still excludes 0.25. If it no longer does, replace 'sits above chance' with 'not separable from chance after correcting for eight comparisons.'"
+   },
+   {
+    "lens": "claims",
+    "severity": "medium",
+    "claim_attacked": "Decodability of the answer from filler token identities is 0.2286 at base ... and 0.3371 after RL ... The filler-specific increase therefore exceeds the content increase, and the token steganography index is positive at 0.0914.",
+    "why": "The base anchor 0.2286 is below the 0.25 chance floor and the paper itself calls it 'indistinguishable from the 0.25 chance level,' yet its point value is used as the reference for both the 0.1085 rise and the +0.0914 index. A below-chance accuracy is sampling noise, not a true baseline; using it inflates the apparent rise and the index by treating a noise dip as the starting point. Note base_token_content sits at 0.2686 (near/above chance), so the filler arm's anomalously low base is doing real work in making the index positive. The magnitude of the headline effect is partly an artifact of where the base point happened to land, not information gained after RL.",
+    "suggested_fix": "Report the rise and index relative to the chance floor (0.25) rather than the noisy base point, or show via the item bootstrap how much of +0.0914 survives when the base filler arm is held at chance. Quantify the fraction of the index attributable to base_token_filler sitting below 0.25."
+   },
+   {
+    "lens": "claims",
+    "severity": "low",
+    "claim_attacked": "every value lies between 0.23 and 0.34, within a narrow band just around chance ... All values sit near chance (Figure 2/4 captions) vs. 0.3371 after RL ... sits above chance",
+    "why": "The draft uses the same band of numbers two incompatible ways: when arguing the result is a near-null it calls every probe value 'just around chance' / 'sits near the 0.25 chance line,' but when arguing there is a hint it calls 0.3371 'above chance.' A number cannot be both decoratively-at-chance and a load-bearing above-chance signal. This rhetorical flexibility lets the paper claim honesty (near-null framing) while still extracting a positive headline from one member of that same band.",
+    "suggested_fix": "Pick one CI-grounded framing for the whole band and apply it consistently: if rl_token_filler is genuinely 'above chance,' drop 'every value sits near chance'; if the band is genuinely near-chance, drop 'above chance' and present the index strictly as a point estimate with its (overlapping-zero) CI."
+   }
+  ]
+ },
+ "not_checked": [
+  "a causal token-resampling intervention (does rewriting the filler tokens change the answer) - the decisive channel test",
+  "a stronger RL treatment that visibly reshapes the policy, or a larger model",
+  "hidden information other than the gold answer letter (a channel can encode anything)",
+  "a validated load-bearing-ness measure instead of a stopword/punctuation heuristic",
+  "generative non-multiple-choice tasks with longer CoT where filler is more abundant",
+  "multiple layers or per-token rather than mean-pooled activation probes"
+ ]
+}

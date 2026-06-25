@@ -1,0 +1,5 @@
+section,acc,n,chance
+base_act_filler,0.302857,175,0.25
+rl_act_filler,0.285714,175,0.25
+base_act_content,0.228571,175,0.25
+rl_act_content,0.297143,175,0.25

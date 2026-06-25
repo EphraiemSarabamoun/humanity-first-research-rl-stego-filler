@@ -1,0 +1,118 @@
+@article{roger2023preventing,
+  title={Preventing Language Models From Hiding Their Reasoning},
+  author={Roger, Fabien and Greenblatt, Ryan},
+  eprint={2310.18512}, archivePrefix={arXiv}, year={2023},
+  annote={Shows LLMs can encode hidden reasoning steganographically in their outputs and proposes defenses; the direct motivation for testing whether RL induces a filler-token channel.}
+}
+
+@article{motwani2024secret,
+  title={Secret Collusion among AI Agents: Multi-Agent Deception via Steganography},
+  author={Motwani, Sumeet Ramesh and Baranchuk, Mikhail and Strohmeier, Martin and Bolina, Vijay and Torr, Philip HS and Hammond, Lewis and Schroeder de Witt, Christian},
+  eprint={2402.07510}, archivePrefix={arXiv}, year={2024},
+  annote={Frames steganographic information hiding by AI systems as a safety threat; situates filler-token channels in the collusion-risk literature.}
+}
+
+@article{lanham2023measuring,
+  title={Measuring Faithfulness in Chain-of-Thought Reasoning},
+  author={Lanham, Tamera and Chen, Anna and Radhakrishnan, Ansh and Steiner, Benoit and Denison, Carson and Hernandez, Danny and Li, Dustin and Durmus, Esin and Hubinger, Evan and Kernion, Jackson and others},
+  eprint={2307.13702}, archivePrefix={arXiv}, year={2023},
+  annote={Faithfulness interventions on the CoT; a filler-token channel would be a concrete mechanism of unfaithfulness.}
+}
+
+@article{turpin2023saywhat,
+  title={Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting},
+  author={Turpin, Miles and Michael, Julian and Perez, Ethan and Bowman, Samuel R},
+  eprint={2305.04388}, archivePrefix={arXiv}, year={2023},
+  annote={Stated reasoning can hide the true cause of the answer; the broad phenomenon a steganographic channel would instantiate.}
+}
+
+@article{shao2024deepseekmath,
+  title={DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models},
+  author={Shao, Zhihong and Wang, Peiyi and Zhu, Qihao and Xu, Runxin and Song, Junxiao and Bi, Xiao and Zhang, Haowei and Zhang, Mingchuan and Li, YK and Wu, Y and others},
+  eprint={2402.03300}, archivePrefix={arXiv}, year={2024},
+  annote={Introduces GRPO, the outcome-only RL algorithm whose checkpoints we probe.}
+}
+
+@article{guo2025deepseekr1,
+  title={DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning},
+  author={Guo, Daya and Yang, Dejian and Zhang, Haowei and Song, Junxiao and Zhang, Ruoyu and Xu, Runxin and Zhu, Qihao and Ma, Shirong and Wang, Peiyi and Bi, Xiao and others},
+  eprint={2501.12948}, archivePrefix={arXiv}, year={2025},
+  annote={Large-scale outcome-only RL that reshapes CoT; the regime where a filler channel would most plausibly emerge.}
+}
+
+@article{ouyang2022instructgpt,
+  title={Training language models to follow instructions with human feedback},
+  author={Ouyang, Long and Wu, Jeffrey and Jiang, Xu and Almeida, Diogo and Wainwright, Carroll and Mishkin, Pamela and Zhang, Chong and Agarwal, Sandhini and Slama, Katarina and Ray, Alex and others},
+  eprint={2203.02155}, archivePrefix={arXiv}, year={2022},
+  annote={The canonical outcome-reward post-training pipeline.}
+}
+
+@article{bai2022hh,
+  title={Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback},
+  author={Bai, Yuntao and Jones, Andy and Ndousse, Kamal and Askell, Amanda and Chen, Anna and DasSarma, Nova and Drain, Dawn and Fort, Stanislav and Ganguli, Deep and Henighan, Tom and others},
+  eprint={2204.05862}, archivePrefix={arXiv}, year={2022},
+  annote={Establishes RLHF as standard; context for outcome-reward effects on the reasoning trace.}
+}
+
+@article{rafailov2023dpo,
+  title={Direct Preference Optimization: Your Language Model is Secretly a Reward Model},
+  author={Rafailov, Rafael and Sharma, Archit and Mitchell, Eric and Ermon, Stefano and Manning, Christopher D and Finn, Chelsea},
+  eprint={2305.18290}, archivePrefix={arXiv}, year={2023},
+  annote={A widely used outcome-level preference optimizer in the same family.}
+}
+
+@article{wei2022cot,
+  title={Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
+  author={Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Ichter, Brian and Xia, Fei and Chi, Ed and Le, Quoc and Zhou, Denny},
+  eprint={2201.11903}, archivePrefix={arXiv}, year={2022},
+  annote={Defines chain-of-thought reasoning, the trace whose filler tokens we probe.}
+}
+
+@article{lightman2023letsverify,
+  title={Let's Verify Step by Step},
+  author={Lightman, Hunter and Kosaraju, Vineet and Burda, Yura and Edwards, Harri and Baker, Bowen and Lee, Teddy and Leike, Jan and Schulman, John and Sutskever, Ilya and Cobbe, Karl},
+  eprint={2305.20050}, archivePrefix={arXiv}, year={2023},
+  annote={Process versus outcome supervision; the contrast that makes a hidden outcome-driven channel a concern.}
+}
+
+@article{burns2022ccs,
+  title={Discovering Latent Knowledge in Language Models Without Supervision},
+  author={Burns, Collin and Ye, Haotian and Klein, Dan and Steinhardt, Jacob},
+  eprint={2212.03827}, archivePrefix={arXiv}, year={2022},
+  annote={Answer-relevant information is linearly readable from activations; the basis for our activation probe.}
+}
+
+@article{marks2023geometry,
+  title={The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets},
+  author={Marks, Samuel and Tegmark, Max},
+  eprint={2310.06824}, archivePrefix={arXiv}, year={2023},
+  annote={Linear decodability of correctness from activations; methodological template for the position-activation probe.}
+}
+
+@article{hendrycks2021mmlu,
+  title={Measuring Massive Multitask Language Understanding},
+  author={Hendrycks, Dan and Burns, Collin and Basart, Steven and Zou, Andy and Mazeika, Mantas and Song, Dawn and Steinhardt, Jacob},
+  eprint={2009.03300}, archivePrefix={arXiv}, year={2020},
+  annote={The MMLU benchmark used for training the RL model and for the probes.}
+}
+
+@article{qwen2024report,
+  title={Qwen2.5 Technical Report},
+  author={Yang, An and Yang, Baosong and Zhang, Beichen and Hui, Binyuan and Zheng, Bo and Yu, Bowen and Li, Chengyuan and Liu, Dayiheng and Huang, Fei and Wei, Haoran and others},
+  eprint={2412.15115}, archivePrefix={arXiv}, year={2024},
+  annote={Model card for Qwen2.5-1.5B-Instruct, the base model.}
+}
+
+@article{kojima2022zeroshot,
+  title={Large Language Models are Zero-Shot Reasoners},
+  author={Kojima, Takeshi and Gu, Shixiang Shane and Reid, Machel and Matsuo, Yutaka and Iwasawa, Yusuke},
+  eprint={2205.11916}, archivePrefix={arXiv}, year={2022},
+  annote={Simple prompts elicit reasoning traces; supports treating the generated CoT as the object of study.}
+}
+
+@article{cobbe2021gsm8k,
+  title={Training Verifiers to Solve Math Word Problems},
+  author={Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and others},
+  eprint={2110.14168}, archivePrefix={arXiv}, year={2021},
+  annote={Verifiable-answer reward signals that ground outcome-only RL.}
+}

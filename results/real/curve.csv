@@ -1,0 +1,11 @@
+section,acc,n,chance
+base_token_filler,0.228571,175,0.25
+rl_token_filler,0.337143,175,0.25
+base_token_content,0.268571,175,0.25
+rl_token_content,0.285714,175,0.25
+base_act_filler,0.302857,175,0.25
+rl_act_filler,0.285714,175,0.25
+base_act_content,0.228571,175,0.25
+rl_act_content,0.297143,175,0.25
+token_steg_index,0.091429,175,0.25
+act_steg_index,-0.085714,175,0.25
